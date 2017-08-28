@@ -14,7 +14,7 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 
-#define previewFrame (CGRect){ 0, 65, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - 138 }
+#define previewFrame (CGRect){ 0, 80, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - 153 }
 
 // pinch
 #define MAX_PINCH_SCALE_NUM   3.f
@@ -62,7 +62,7 @@
         [self.layer addSublayer:_previewLayer];
 
         self.tintColor = [UIColor whiteColor];
-        self.selectedTintColor = [UIColor redColor];
+        self.selectedTintColor = [UIColor greenColor];
     }
 
     return self;
@@ -172,7 +172,7 @@
         [_cameraButton setBackgroundColor:[UIColor clearColor]];
         [_cameraButton setImage:[[UIImage imageInBundleNamed:@"flip"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
         [_cameraButton setImage:[[UIImage imageInBundleNamed:@"flip"] tintImageWithColor:self.selectedTintColor] forState:UIControlStateSelected];
-        [_cameraButton setFrame:(CGRect){ 25, 17.5f, 30, 30 }];
+        [_cameraButton setFrame:(CGRect){ 25, 30, 30, 30 }];
         [_cameraButton addTarget:self action:@selector(changeCamera:) forControlEvents:UIControlEventTouchUpInside];
     }
 
@@ -186,27 +186,12 @@
         [_flashButton setBackgroundColor:[UIColor clearColor]];
         [_flashButton setImage:[[UIImage imageInBundleNamed:@"flash"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
         [_flashButton setImage:[[UIImage imageInBundleNamed:@"flash"] tintImageWithColor:self.selectedTintColor] forState:UIControlStateSelected];
-        [_flashButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 55, 17.5f, 30, 30 }];
+        [_flashButton setFrame:(CGRect){ CGRectGetWidth(self.bounds) - 55, 30, 30, 30 }];
         [_flashButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
         [_flashButton addTarget:self action:@selector(flashTriggerAction:) forControlEvents:UIControlEventTouchUpInside];
     }
 
     return _flashButton;
-}
-
-- (UIButton *) gridButton
-{
-    if ( !_gridButton ) {
-        _gridButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_gridButton setBackgroundColor:[UIColor clearColor]];
-        [_gridButton setImage:[[UIImage imageInBundleNamed:@"cameraGrid"] tintImageWithColor:self.tintColor] forState:UIControlStateNormal];
-        [_gridButton setImage:[[UIImage imageInBundleNamed:@"cameraGrid"] tintImageWithColor:self.selectedTintColor] forState:UIControlStateSelected];
-        [_gridButton setFrame:(CGRect){ 0, 0, 30, 30 }];
-        [_gridButton setCenter:(CGPoint){ CGRectGetMidX(self.topContainerBar.bounds), CGRectGetMidY(self.topContainerBar.bounds) }];
-        [_gridButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin];
-        [_gridButton addTarget:self action:@selector(addGridToCameraAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _gridButton;
 }
 
 #pragma mark - Focus / Expose Box
