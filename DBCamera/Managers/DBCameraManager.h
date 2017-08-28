@@ -13,7 +13,7 @@
 /**
  *  The object manager for the DBCamera
  */
-@interface DBCameraManager : NSObject
+@interface DBCameraManager :  NSObject
 /**
  *  The DBCameraManagerDelegate object
  */
